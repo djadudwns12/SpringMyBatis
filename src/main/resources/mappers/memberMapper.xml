@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 예제(mybatis 홈페이지 예제) -->
+<!-- <mapper namespace="org.mybatis.example.BlogMapper"> <select id="selectBlog" 
+	resultType="Blog"> select * from Blog where id = #{id} </select> </mapper> -->
+<mapper namespace="com.mbcac_mb.mapper.MemberMapper">
+	<!-- DB서버에 현재날짜와 현재 시간을 출력하는 쿼리문 -->
+	<select id="getTime" resultType="string">
+		select now()
+	</select>
+	<!-- Member테이블에 신규회원저장하는 쿼리문 -->
+	<insert id="saveMember" parameterType="com.mbcac_mb.domain.MemberVO">
+	insert into member(userid,userPwd,userName,mobile,email) values(#{userid},sha1(md5(#{userPwd})),#{userName},#{mobile},#{email})
+	</insert>
+	<!-- userid로 회원을 가져오는 쿼리문  -->
+	<select id="getMemberByUserid" parameterType="string" resultType="com.mbcac_mb.domain.MemberVO">
+		select * from member Where userid = #{userid}
+	
+	</select>
+	<!-- 모든회원정보를 검색하는 쿼리문 -->
+	<select id="getAllMember" resultType="com.mbcac_mb.domain.MemberVO">
+		select * from member
+	
+	</select>
+
+
+
+</mapper>
