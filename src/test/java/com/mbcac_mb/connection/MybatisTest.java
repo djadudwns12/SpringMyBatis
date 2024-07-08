@@ -22,12 +22,16 @@ public class MybatisTest
 	private SqlSessionFactory sqlFactory; // Spring 컨테이너에서 SqlSessionFactory 객체를 찿아서 주입
 	
 	@Test
-	public void testSqlSessionFactory() {
+	public void testSqlSessionFactory() 
+	{
 		System.out.println(sqlFactory.toString());
 		
 		SqlSession session = sqlFactory.openSession();
-		if(session !=null) {
+		if(session !=null) 
+		{
+		
 			System.out.println(session.toString());
+		
 		}
 		
 	}
