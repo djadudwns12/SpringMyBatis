@@ -24,7 +24,14 @@
 		select * from member
 	
 	</select>
-
+	<!-- 전화번호를 변경하는 쿼리문  -->
+	<update id="modifyMobile" parameterType="hashmap">
+		update member set mobile = #{mobile} where userid = #{userid}
+	</update>
+	<!-- 회원을 삭제하는 쿼리문  -->
+	<delete id="removeMember">
+		delete from member where userid = #{userid}
+	</delete>
 
 
 </mapper>
