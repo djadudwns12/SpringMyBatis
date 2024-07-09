@@ -1,6 +1,8 @@
 package com.mbcac_mb.persisence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -42,6 +44,27 @@ public class MemberDAOImpl implements MemberDAO {
 	public List<MemberVO> getAllMember() {
 		
 		return sqlSession.selectList(NS+".getAllMember");
+	}
+
+
+	@Override
+	public int updateMemberMobile(String userid, String mobile) 
+	{
+		// SqlSessionTemplate.update는 파라미터를 1개만 받을수 있다.
+		// 여기에는 쿼리문에 전달할 파라미터가 2개이므로 map으로 파라미터를 감싸서 넘겨준다.
+		Map<String, Object> map = new HashMap<String, Object>(); // 스프링이 관리하여 주는 객체가 아니므로 직접 선언하여 준다.(스프링이 관리 안하는 이유는 올리면 메모리에 계속남게 되므로 비효율적)
+		map.put("userid", userid);
+		map.put("mobile", mobile);
+		
+		
+		return sqlSession.update(NS+".modifyMobile", map);
+	}
+
+
+	@Override
+	public int removeMember(String userid) {
+		
+		return sqlSession.delete(NS + ".removeMember", userid);
 	}
 	
 	// CRUD (Creat(데이터 생성 -> insert) , Read(select) , Update(update) , Delete(delete)) 
