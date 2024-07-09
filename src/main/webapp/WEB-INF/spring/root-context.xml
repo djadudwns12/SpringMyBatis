@@ -13,7 +13,8 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- mysql 데이터 베이스 연결   -->
-	<bean id="dataSource"
+	
+	<!-- <bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver">
@@ -23,7 +24,37 @@
 		</property>
 		<property name="username" value="root"></property>
 		<property name="password" value="root"></property>
+	</bean> -->
+	
+	<!-- log4jdbc 이용시  -->
+	<!-- 메모리를 많이 잡아먹으므로 사용할때만 쓰기() -->
+	<!-- <bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy">
+		</property>
+		<property name="url"
+			value="jdbc:log4jdbc:mysql://127.0.0.1:3307/dev_tk?useSSL=false">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean> -->
+	
+	<!--  log4jdbc 이용시 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+		
+		<property name="url"
+			value="jdbc:log4jdbc:mysql://127.0.0.1:3307/dev_tk?useSSL=false">
+		</property>
+		
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
 	</bean>
+	
+	
 	
 	<!-- Mybatis 객체  -->
 	<bean id="sqlSessionFactory"
