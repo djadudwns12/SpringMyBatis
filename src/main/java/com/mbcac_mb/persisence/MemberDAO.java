@@ -17,6 +17,10 @@ public interface MemberDAO
 	MemberVO getMemberByUserid(String userid);
 	// 모든회원정보를 가져오는 메서드
 	public List<MemberVO> getAllMember();
+	// 회원의 전화번호를 변경할수있는 메서드
+	public int updateMemberMobile(String userid , String mobile);
+	// 회원을 탈퇴하는 메서드
+	public int removeMember(String userid);
 	
 	
 	
