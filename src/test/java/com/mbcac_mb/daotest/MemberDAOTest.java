@@ -55,16 +55,44 @@ public class MemberDAOTest
 //		System.out.println((mdao.getMemberByUserid("dooly")).toString()); 
 //	}
 	
+//	@Test
+//	public void getAllMember() {
+//		
+//		List<MemberVO> list = mdao.getAllMember();
+//		
+//		for(MemberVO m : list) {
+//			System.out.println(m.toString());
+//		}
+//		
+//	  
+//	}
+//	@Test
+//	public void updateTest() {
+//		String uid = "douner";
+//		String  mobile = "douner";
+//		
+//		int result = mdao.updateMemberMobile(uid, mobile);
+//		
+//		if(result == 1) 
+//		{
+//			System.out.println("수정성공");
+//		}
+//		
+//		
+//	}
 	@Test
-	public void getAllMember() {
+	public void deleteTest() {
+		String uid = "douner";
+		//String  mobile = "douner";
 		
-		List<MemberVO> list = mdao.getAllMember();
+		int result = mdao.removeMember(uid);
 		
-		for(MemberVO m : list) {
-			System.out.println(m.toString());
+		if(result == 1) 
+		{
+			System.out.println("삭제성공");
 		}
 		
-	  
+		
 	}
 	
 	
